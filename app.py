@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import feedparser, sqlite3
-from bs4 import BeautifulSoup   # For cleaning summaries
-from sentiment import get_sentiment  # Custom sentiment module
-from datetime import datetime   # 👈 Added for year
+from bs4 import BeautifulSoup   
+from sentiment import get_sentiment 
+from datetime import datetime   
 
 # ---------------- Flask App ----------------
 app = Flask(__name__)
@@ -55,7 +55,7 @@ def fetch_news():
             "title": entry.title,
             "link": entry.link,
             "summary": summary,
-            "score": round(score, 2),     # ✅ will now show VADER score
+            "score": round(score, 2),     
             "sentiment": sentiment
         })
     return articles
@@ -113,7 +113,7 @@ def news():
         articles=articles,
         overall=overall_sentiment,
         overall_score=overall_score,
-        year=datetime.now().year   # 👈 Added here
+        year=datetime.now().year   
     )
 
 @app.route("/logout")
