@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News Sentiment Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="news-body">
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">📰 இன்றைய செய்திகள்</div>
+    <nav>
+      <a href="{{ url_for('news') }}">Home</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+  </div>
+
+  <!-- Title -->
+  <h1 class="page-title">Latest News</h1>
+
+  <!-- Overall Sentiment -->
+  <div class="overall-box">
+    Overall Sentiment Score: <strong>{{ overall_score }}</strong> → 
+    <strong>{{ overall }}</strong>
+  </div>
+
+  <!-- News Cards -->
+  <div class="news-container">
+    <div class="news-grid">
+      {% for article in articles %}
+      <div class="news-card">
+        <div class="news-content">
+          <h3><a href="{{ article.link }}" target="_blank">{{ article.title }}</a></h3>
+          <p>{{ article.summary }}</p>
+          <span class="badge {{ article.sentiment|lower }}">
+            {{ article.sentiment }} (Score: {{ article.score }})
+          </span>
+          <br>
+          <a class="read-more" href="{{ article.link }}" target="_blank">Read More →</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Footer -->
+<footer>
+  &copy; {{ year }} News | Developed by RAGOUNATHE 
+</footer>

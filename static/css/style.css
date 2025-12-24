@@ -1,0 +1,291 @@
+/* ===============================
+   GLOBAL SETTINGS
+================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+/* ===============================
+   LOGIN / REGISTER PAGE (auth.html)
+================================= */
+body.auth-body {
+  background: linear-gradient(135deg, #1d2b64, #f8cdda);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  backdrop-filter: blur(12px);
+  width: 350px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* --- Toggle Buttons --- */
+.form-toggle {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.form-toggle button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.form-toggle button.active {
+  border-bottom: 2px solid #ff6a00;
+  font-weight: bold;
+}
+
+/* --- Forms --- */
+.form {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form.active {
+  display: flex;
+  animation: slideIn 0.5s ease;
+}
+
+.form h2.glow {
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px #fff, 0 0 20px #f0f, 0 0 30px #0ff;
+}
+
+.form input {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.form input::placeholder {
+  color: #ddd;
+}
+
+.form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.form button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #ff6a00, 0 0 20px #ee0979;
+}
+
+.error {
+  color: #ff4c4c;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* ===============================
+   NEWS PORTAL PAGE (news.html)
+================================= */
+body.news-body {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Navbar --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 40px;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.navbar .logo {
+  font-size: 22px;
+  font-weight: bold;
+  text-shadow: 0 0 10px #00f, 0 0 20px #0ff;
+}
+
+.navbar nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.navbar nav a:hover {
+  color: #ffdd57;
+  text-shadow: 0 0 8px #ffdd57;
+}
+
+/* --- Page Title --- */
+.page-title {
+  text-align: center;
+  margin: 40px 0 20px;
+  font-size: 34px;
+  font-weight: bold;
+  text-shadow: 0 0 10px #f0f, 0 0 25px #0ff;
+}
+
+/* --- Overall Sentiment Box --- */
+.overall-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 18px 25px;
+  margin: 10px auto 40px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 18px;
+  width: fit-content;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  backdrop-filter: blur(12px);
+  font-weight: 500;
+}
+
+/* --- News Grid --- */
+.news-container {
+  flex: 1;
+  padding: 20px 60px 50px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* --- News Card --- */
+.news-card {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  backdrop-filter: blur(14px);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25);
+}
+
+/* --- Card Image --- */
+.news-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+/* --- Card Content --- */
+.news-content {
+  padding: 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.news-content h3 a {
+  color: #2199ab;          /* make links white (same as h3 text) */
+  text-decoration: none;   /* remove underline */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.news-content h3 a:hover {
+  color: #ffdd57;          /* gold on hover */
+  text-shadow: 0 0 8px #ffdd57;
+}
+
+.news-content h3 a:visited {
+  color: #2199ab;/* light gray for visited links */
+}
+
+.news-content p {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+/* --- Read More Button --- */
+.read-more {
+  align-self: flex-start;
+  text-decoration: none;
+  color: #ff6a00;
+  font-weight: bold;
+  transition: 0.3s;
+  font-size: 14px;
+  margin-top: auto;
+}
+
+.read-more:hover {
+  color: #ffdd57;
+  text-shadow: 0 0 10px #ffdd57;
+}
+
+/* --- Sentiment Badges --- */
+.badge {
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 13px;
+  color: white;
+  display: inline-block;
+  margin-top: 10px;
+  align-self: flex-start;
+}
+
+.badge.positive { background: #28a745; }   /* green */
+.badge.neutral  { background: #6c757d; }   /* gray */
+.badge.negative { background: #dc3545; }   /* red */
+
+
+/* ===============================
+   ANIMATIONS
+================================= */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slideIn {
+  from {opacity: 0; transform: translateX(-30px);}
+  to {opacity: 1; transform: translateX(0);}
+}

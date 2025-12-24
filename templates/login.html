@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>News Portal - Auth</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="auth-body">
+  <div class="auth-container">
+    <div class="form-toggle">
+      <button id="loginBtn" class="active">Login</button>
+      <button id="registerBtn">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form method="POST" id="loginForm" class="form active">
+      <h2 class="glow">Login</h2>
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+      <input type="text" name="username" placeholder="Enter username" required>
+      <input type="password" name="password" placeholder="Enter password" required>
+      <button type="submit" name="login">Login</button>
+    </form>
+
+    <!-- Register Form -->
+    <form method="POST" id="registerForm" class="form">
+      <h2 class="glow">Register</h2>
+      <input type="text" name="username" placeholder="Choose username" required>
+      <input type="email" name="email" placeholder="Enter email" required>
+      <input type="password" name="password" placeholder="Enter password" required>
+      <input type="password" name="confirm_password" placeholder="Confirm password" required>
+      <button type="submit" name="register">Register</button>
+    </form>
+  </div>
+
+  <script>
+    // Toggle between Login & Register
+    const loginBtn = document.getElementById("loginBtn");
+    const registerBtn = document.getElementById("registerBtn");
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+
+    loginBtn.onclick = () => {
+      loginBtn.classList.add("active");
+      registerBtn.classList.remove("active");
+      loginForm.classList.add("active");
+      registerForm.classList.remove("active");
+    };
+
+    registerBtn.onclick = () => {
+      registerBtn.classList.add("active");
+      loginBtn.classList.remove("active");
+      registerForm.classList.add("active");
+      loginForm.classList.remove("active");
+    };
+  </script>
+</body>
+</html>
